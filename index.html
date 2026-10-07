@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="loading-screen">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+    <section class="loader-card">
+      <div class="game-logo">
+        <span class="logo-mark">▶</span>
+        <span class="logo-text">GAME<span>HUB</span></span>
+      </div>
+
+      <div class="spinner"></div>
+
+      <h1>Loading Game</h1>
+      <p id="status">Preparing your game...</p>
+
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+        <div class="progress-info">
+          <span>Loading</span>
+          <strong id="percent">0%</strong>
+        </div>
+      </div>
+
+      <p class="tip" id="tip">Get ready to play!</p>
+    </section>
+  </main>
+
+  <script>
+    const progress = document.getElementById("progress");
+    const percent = document.getElementById("percent");
+    const status = document.getElementById("status");
+    const tip = document.getElementById("tip");
+
+    let value = 0;
+
+    const timer = setInterval(() => {
+      value += Math.floor(Math.random() * 5) + 2;
+
+      if (value >= 100) {
+        value = 100;
+        clearInterval(timer);
+
+        progress.style.width = "100%";
+        percent.textContent = "100%";
+        status.textContent = "Game ready!";
+        tip.textContent = "Redirecting...";
+
+        // Redirect after the loading screen finishes.
+        setTimeout(() => {
+          window.location.href = "https://www.crazygames.com/";
+        }, 700);
+
+        return;
+      }
+
+      status.textContent =
+        value < 30 ? "Preparing your game..." :
+        value < 60 ? "Loading game assets..." :
+        value < 90 ? "Setting things up..." :
+        "Almost ready...";
+
+      progress.style.width = value + "%";
+      percent.textContent = value + "%";
+    }, 180);
+  </script>
+</body>
+</html>
