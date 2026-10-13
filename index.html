@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#031039">
+  <title>777 AGAR — Loading</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="screen">
+    <div class="status" aria-label="Phone status bar">
+      <span>12:30</span>
+      <div class="status-icons" aria-hidden="true">
+        <span class="signal"></span><span class="network-bars">▰</span>
+        <span class="battery"></span><span>100%</span>
+      </div>
+    </div>
+
+    <header class="brand" aria-label="777 AGAR">
+      <div class="crown" aria-hidden="true">👑</div>
+      <div class="logo">777</div>
+      <span class="brand-name">AGAR</span>
+      <p class="tagline">PLAY <span>•</span> ENJOY <span>•</span> WIN</p>
+    </header>
+
+    <section class="loader-area" aria-live="polite" aria-label="Loading">
+      <div class="loader" role="progressbar" aria-label="Preparing your experience"></div>
+      <p class="loading-text">Preparing your experience...</p>
+    </section>
+
+    <section class="notice" aria-label="External website notice">
+      <svg class="globe" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <circle cx="24" cy="24" r="19"></circle>
+        <ellipse cx="24" cy="24" rx="8" ry="19"></ellipse>
+        <path d="M6 17h36M6 31h36M5 24h38"></path>
+      </svg>
+      <div>
+        <p class="notice-title">External website: <strong>17ph33.win</strong></p>
+        <p class="notice-copy">Review the destination before continuing.</p>
+      </div>
+    </section>
+
+    <a class="continue" href="https://www.17ph33.win/?pid=896950662&amp;fromPage=AGENCY_CENTER"
+       target="_blank" rel="noopener noreferrer">
+      ↗ &nbsp; Continue to website
+    </a>
+    <a class="cancel" href="#" id="cancelLink">Cancel</a>
+
+    <footer class="footer">
+      <span class="age">18+</span>
+      <span class="separator">|</span>
+      <span>Play responsibly</span>
+    </footer>
+  </main>
+
+  <script>
+    // Cancel stops the visual loading animation; it does not redirect.
+    document.getElementById("cancelLink").addEventListener("click", function (event) {
+      event.preventDefault();
+      const loader = document.querySelector(".loader");
+      const message = document.querySelector(".loading-text");
+      loader.style.animation = "none";
+      loader.classList.add("cancelled");
+      message.textContent = "You cancelled. You can safely close this page.";
+    });
+  </script>
+</body>
+</html>
